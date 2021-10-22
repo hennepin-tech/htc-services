@@ -3,8 +3,6 @@ import fetch from 'node-fetch'
 
 export const handler: Handler = async (event, context) => {
 
-  console.log(context)
-
   const { 
     apiVersion = 'v2021-06-07',
     dataset = 'marcomm',
