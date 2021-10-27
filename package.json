@@ -1,6 +1,6 @@
 {
   "name": "htc-services",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha",
   "description": "A serverless API for HTC's web products",
   "main": "index.js",
   "scripts": {
