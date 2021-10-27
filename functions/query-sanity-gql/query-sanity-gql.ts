@@ -6,11 +6,19 @@ export const handler: Handler = async (event, context) => {
   const { 
     apiVersion = 'v2021-06-07',
     dataset = 'marcomm',
-    query = '*[0]'
+    tag = 'default',
+    query
   } = event.queryStringParameters
 
-  const url = `https://${process.env.SANITY_PROJECT_ID}.apicdn.sanity.io/${apiVersion}/data/query/${dataset}?query=${query}`
-  const res = await fetch(url)
+  const url = `https://${process.env.SANITY_PROJECT_ID}.api.sanity.io/v1/graphql/${dataset}/${tag}`
+  const res = await fetch(url, { 
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      query: query
+    })})
 
   return {
     statusCode: 200,
