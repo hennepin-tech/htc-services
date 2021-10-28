@@ -1,15 +1,10 @@
-import { Handler } from '@netlify/functions'
-import fetch from 'node-fetch'
+const fetch = require('node-fetch')
+import type { QuerySanityParams } from './types'
 
-export const handler: Handler = async (event, context) => {
-
-  const { 
-    apiVersion = 'v2021-06-07',
-    dataset = 'marcomm',
-    query = '*[0]'
-  } = event.queryStringParameters
+export const querySanity = async ({apiVersion, dataset, query}:QuerySanityParams) => {
 
   const url = `https://${process.env.SANITY_PROJECT_ID}.apicdn.sanity.io/${apiVersion}/data/query/${dataset}?query=${query}`
+  
   const res = await fetch(url)
 
   return {
