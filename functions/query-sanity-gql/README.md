@@ -1,0 +1,1 @@
+Returns a JSON payload from HTC's Sanity Content Lake based on a graphql query
