@@ -10,7 +10,8 @@ export const handler: Handler = async (event, context) => {
   } = event.queryStringParameters
 
   const url = `https://${process.env.SANITY_PROJECT_ID}.apicdn.sanity.io/${apiVersion}/data/query/${dataset}?query=${query}`
-  const res = await fetch(url)
+  const res = await fetch(url, { headers: { Authorization: `Bearer ${process.env.SANITY_READ_TOKEN}` }})
+  
 
   return {
     statusCode: 200,
